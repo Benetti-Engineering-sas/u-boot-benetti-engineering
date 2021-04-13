@@ -48,3 +48,11 @@ u32 get_cpu_rev(void)
 #error This IMXRT SoC is not supported
 #endif
 }
+
+#if defined(CONFIG_FEC_MXC)
+void imx_get_mac_from_fuse(int dev_id, unsigned char *mac)
+{
+	/* TODO: */
+	memset(mac, 0, 6);
+}
+#endif
