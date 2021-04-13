@@ -40,6 +40,7 @@
 
 &iomuxc {
 	pinctrl-names = "default";
+
 	pinctrl_lpuart1: lpuart1grp {
 		fsl,pins = <
 			MXRT1050_IOMUXC_GPIO_AD_B0_12_LPUART1_TXD	0xf1
