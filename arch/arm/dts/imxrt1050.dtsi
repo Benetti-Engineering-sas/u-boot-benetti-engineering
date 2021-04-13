@@ -156,5 +156,14 @@
 			clocks = <&osc3M>;
 			clock-names = "per";
 		};
+
+		fec: fec@402d8000 {
+			compatible = "fsl,imxrt-fec";
+			reg = <0x402d8000 0x4000>;
+			interrupts = <0 114 IRQ_TYPE_LEVEL_HIGH>;
+			clocks = <&clks IMXRT1050_CLK_ENET>;
+			clock-names = "ipg";
+			status = "disabled";
+		};
 	};
 };
