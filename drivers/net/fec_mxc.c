@@ -1259,7 +1259,7 @@ static int fecmxc_probe(struct udevice *dev)
 		}
 	}
 
-	if (IS_ENABLED(CONFIG_IMX8)) {
+	if (IS_ENABLED(CONFIG_IMX8) || IS_ENABLED(CONFIG_IMXRT)) {
 		ret = clk_get_by_name(dev, "ipg", &priv->ipg_clk);
 		if (ret < 0) {
 			debug("Can't get FEC ipg clk: %d\n", ret);
