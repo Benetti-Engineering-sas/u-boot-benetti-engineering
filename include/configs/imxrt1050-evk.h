@@ -24,10 +24,5 @@
 
 #define CFG_SYS_UBOOT_BASE			0x60010000
 
-/* ENET */
-#define CONFIG_ETHPRIME			"FEC"
-#define CONFIG_FEC_XCV_TYPE		RMII
-#define CONFIG_FEC_MXC_PHYADDR		2
-#define IMX_FEC_BASE			0x402D8000
 
 #endif /* __IMXRT1050_EVK_H */
