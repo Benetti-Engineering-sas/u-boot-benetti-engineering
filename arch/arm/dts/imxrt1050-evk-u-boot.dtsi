@@ -332,6 +332,8 @@
 			MXRT1050_IOMUXC_GPIO_B1_11_ENET_RX_ER		0x1b0b1
 			MXRT1050_IOMUXC_GPIO_EMC_40_ENET_MDC		0x1b0b1
 			MXRT1050_IOMUXC_GPIO_EMC_41_ENET_MDIO		0x1b0b1
+			MXRT1050_IOMUXC_GPIO_AD_B0_09_GPIO1_IO09	0x1b0b1
+			MXRT1050_IOMUXC_GPIO_AD_B0_10_GPIO1_IO10	0x1b0b1
 		>;
 	};
 };
@@ -380,4 +382,19 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_enet>;
 	status = "okay";
+	phy-mode = "rmii";
+	phy-reset-gpios = <&gpio1 9 GPIO_ACTIVE_LOW>;
+	phy-reset-duration = <1>;
+	phy-reset-post-delay = <1>;
+	phy-handle = <&ethphy0>;
+
+	mdio {
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		ethphy0: ethernet-phy@0 {
+			compatible = "ethernet-phy-ieee802.3-c22";
+			reg = <2>;
+		};
+	};
 };
