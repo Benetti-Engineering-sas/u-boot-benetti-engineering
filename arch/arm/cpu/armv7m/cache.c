@@ -270,6 +270,12 @@ void invalidate_dcache_all(void)
 		return;
 	}
 }
+
+void mmu_set_region_dcache_behaviour(phys_addr_t start, size_t size,
+                                     enum dcache_option option)
+{
+	/* TODO: */
+}
 #else
 void dcache_enable(void)
 {
