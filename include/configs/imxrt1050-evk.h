@@ -24,5 +24,13 @@
 
 #define CFG_SYS_UBOOT_BASE			0x60010000
 
+#ifdef CONFIG_VIDEO
+#define CFG_EXTRA_ENV_SETTINGS \
+		"stdin=serial\0" \
+		"stdout=serial,vidconsole\0" \
+		"stderr=serial,vidconsole\0" \
+		"ethaddr=00:0A:F7:95:65:A4\0" \
+		"ipaddr=192.168.50.240\0"
+#endif
 
 #endif /* __IMXRT1050_EVK_H */
