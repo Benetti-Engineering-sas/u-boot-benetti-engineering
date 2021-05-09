@@ -554,6 +554,7 @@ struct phy_device *phy_device_create(struct mii_dev *bus, int addr,
 	dev->node = ofnode_null();
 
 	dev->autoneg = AUTONEG_ENABLE;
+	dev->autoneg = AUTONEG_DISABLE;
 
 	dev->addr = addr;
 	dev->phy_id = phy_id;
