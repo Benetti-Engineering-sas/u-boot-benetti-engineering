@@ -7,6 +7,7 @@
 #include <dm.h>
 #include <init.h>
 #include <log.h>
+#include <phy.h>
 #include <ram.h>
 #include <spl.h>
 #include <asm/global_data.h>
@@ -82,3 +83,27 @@ int board_init(void)
 
 	return 0;
 }
+
+#ifdef CONFIG_FEC_MXC
+
+#define MII_PHY_CTRL2   0x1f
+#define MII_PHY_CTRL2_RMII_CLK_50MHZ    (1 << 7)
+#define MII_PHY_CTRL2_RMII_LED_MODE     (1 << 4)
+
+int board_phy_config(struct phy_device *phydev)
+{
+	if (phydev->drv->config)
+		phydev->drv->config(phydev);
+
+	phy_write(phydev, MDIO_DEVAD_NONE, MII_PHY_CTRL2,
+		phy_read(phydev, MDIO_DEVAD_NONE, MII_PHY_CTRL2) |
+			MII_PHY_CTRL2_RMII_CLK_50MHZ |
+			MII_PHY_CTRL2_RMII_LED_MODE);
+	phy_write(phydev, MDIO_DEVAD_NONE, MII_BMCR,
+		(phy_read(phydev, MDIO_DEVAD_NONE, MII_BMCR) & ~BMCR_ISOLATE) |
+		BMCR_ANENABLE);
+
+	return 0;
+}
+
+#endif
